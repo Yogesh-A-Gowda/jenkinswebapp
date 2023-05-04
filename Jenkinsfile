@@ -1,14 +1,12 @@
 pipeline{
-    agent {
-        label 'linuxagent'
-    }
+    agent any
     tools{
-        maven 'local_maven'
+        maven 'MAVEN_HOME'
     }
     stages{
         stage ('Build'){
             steps{
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
             post{
                 success{
@@ -20,7 +18,7 @@ pipeline{
         stage ('Deploy to tomcat server') {
             steps{
 
-                echo "Deployment"
+                deploy adapters: [tomcat9(credentialsId: '924af29f-5543-4811-9519-471ab6d0a4b7', path: '', url: 'http://localhost:8080')], contextPath: null, war: '**/*.war'
             }
         }
     }
