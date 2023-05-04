@@ -6,10 +6,16 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <head>
 <title>DevOps Class</title>
+	<style>
+		.aa
+		{ display : flex;
+			align-items : center;
+		}
+	</style>
 </head>
 <body>
 
-<f:view>
+<f:view class = "aa">
 	<h:outputText
 		value="Hello #{helloWorldBacking.name}. Happy Learning!" />
 	<h:form id="form2">
